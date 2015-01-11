@@ -9,10 +9,11 @@
 var datasource = require('./../../datasource').getDataSource();
 var Challenge = datasource.Challenge;
 var File = datasource.File;
-var routeHelper = require('./../../lib/routeHelper');
+var routeHelper = require('serenity-route-helper');
 var storageLib = require('./../../lib/storage');
 var async = require('async');
 var safeList = require('../../lib/tc-auth/safelist');
+var auth = require('../../lib/tc-auth');
 
 
 /**
@@ -42,7 +43,7 @@ var getChallengeFileURL = function(method, req, res, next) {
   // check authorization
   var challengeId = req.swagger.params.challengeId.value,
     fileId = req.swagger.params.fileId.value,
-    user = routeHelper.getSigninUser(req);
+    user = auth.getSigninUser(req);
 
   async.waterfall([
     function(cb) {
@@ -99,7 +100,7 @@ var getChallengeFileURL = function(method, req, res, next) {
 var getSubmissionFileURL = function(method, req, res, next) {
   var challengeId = req.swagger.params.challengeId.value,
     submissionId = req.swagger.params.submissionId.value,
-    user = routeHelper.getSigninUser(req),
+    user = auth.getSigninUser(req),
     fileId = req.swagger.params.fileId.value;
 
   async.waterfall([

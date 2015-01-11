@@ -45,7 +45,8 @@
     "sequelize": "^1.7.10",
     "swagger-tools": "^0.6.13",
     "time-grunt": "^0.3.1",
-    "serenity-datasource": "git+ssh://git@gitlab.com:spanhawk/serenity-datasource.git"
+    "serenity-datasource": "git+ssh://git@gitlab.com:spanhawk/serenity-datasource.git",
+    "serenity-route-helper": "git+ssh://git@gitlab.com:spanhawk/serenity-route-helper.git"
   },
   "devDependencies": {
     "grunt": ">=0.4.5",
