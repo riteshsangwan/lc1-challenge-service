@@ -35,8 +35,13 @@ a127.init(function (swaggerConfig) {
     var swaggerDoc = yaml.safeLoad(fs.readFileSync('./api/swagger/swagger.yaml', 'utf8'));
     app.use(swaggerUi(swaggerDoc));
   }
-
-
+/**
+ * Serenity-datasource module standard configuration
+ * This configuration is defined in global application configuration
+ * which is exposed node config module
+ * For more information about serenity-datasource module configuration
+ * see module documentation
+ */
 // @TODO add try/catch logic
   datasource.init(config);
 
