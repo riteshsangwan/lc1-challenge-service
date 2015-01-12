@@ -13,7 +13,8 @@ var express = require('express');
 var config = require('config');
 var datasource = require('./datasource');
 var routeHelper = require('serenity-route-helper');
-var partialResponseHelper = require('./lib/partialResponseHelper');
+var resopnseHelper = require('serenity-partial-response-helper');
+var partialResponseHelper = null;
 var bodyParser = require('body-parser');
 var auth = require('./lib/tc-auth');
 
@@ -44,6 +45,7 @@ a127.init(function (swaggerConfig) {
  */
 // @TODO add try/catch logic
   datasource.init(config);
+  partialResponseHelper = new resopnseHelper(datasource);
 
   var port;
   if (config.has('app.port')) {
