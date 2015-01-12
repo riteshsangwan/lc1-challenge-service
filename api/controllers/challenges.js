@@ -97,8 +97,6 @@ module.exports = {
             }
           };
         } else {
-          console.log(participant);
-          console.log(created);
           routeHelper.addValidationError(req, 'User is already registered for the challenge.');
         }
         next();
