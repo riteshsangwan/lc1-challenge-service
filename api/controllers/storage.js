@@ -10,11 +10,11 @@ var datasource = require('./../../datasource').getDataSource();
 var Challenge = datasource.Challenge;
 var File = datasource.File;
 var routeHelper = require('serenity-route-helper');
-var storageLib = require('./../../lib/storage');
 var async = require('async');
 var safeList = require('../../lib/tc-auth/safelist');
 var auth = require('../../lib/tc-auth');
-
+var config = require('config');
+var storageLib = require('serenity-storage')(config);
 
 /**
  * Helper method to find an entity by entity id property
@@ -155,7 +155,7 @@ var getSubmissionFileURL = function(method, req, res, next) {
 
 /**
  * This method return the file download URL for a challenge file.
- * It uses lib/storage to get the download URL based on the storage provider configuration
+ * It uses serenity-storage module to get the download URL based on the storage provider configuration
  * Only participants can download the files
  *
  * @param  {Object}     req       Express request instance
@@ -180,7 +180,7 @@ exports.getChallengeFileUploadURL = function(req, res, next) {
 
 /**
  * This method return the file download URL for a submission file.
- * It uses lib/storage to get the download URL based on the storage provider configuration
+ * It uses serenity-storage module to get the download URL based on the storage provider configuration
  * Only the person who submitted the file can download the file
  *
  * @param  {Object}     req       Express request instance
