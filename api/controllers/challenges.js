@@ -17,7 +17,7 @@ var Participant = datasource.Participant;
 var Submission = datasource.Submission;
 var controllerHelper = require('./../../lib/controllerHelper');
 var routeHelper = require('serenity-route-helper');
-var auth = require('../../lib/tc-auth');
+var auth = require('serenity-auth');
 
 var challengeControllerOptions = {
   filtering: true,

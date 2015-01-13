@@ -16,7 +16,7 @@ var routeHelper = require('serenity-route-helper');
 var resopnseHelper = require('serenity-partial-response-helper');
 var partialResponseHelper = null;
 var bodyParser = require('body-parser');
-var auth = require('./lib/tc-auth');
+var auth = require('serenity-auth');
 
 var app = express();
 
@@ -24,7 +24,7 @@ a127.init(function (swaggerConfig) {
   app.use(bodyParser.json());
 
 // central point for all authentication
-  auth.auth(app);
+  auth.auth(app, config, routeHelper.errorHandler);
 
 // Serve the Swagger documents and Swagger UI
   if (config.has('app.loadDoc') && config.get('app.loadDoc')) {

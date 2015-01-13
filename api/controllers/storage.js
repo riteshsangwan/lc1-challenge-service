@@ -11,8 +11,7 @@ var Challenge = datasource.Challenge;
 var File = datasource.File;
 var routeHelper = require('serenity-route-helper');
 var async = require('async');
-var safeList = require('../../lib/tc-auth/safelist');
-var auth = require('../../lib/tc-auth');
+var auth = require('serenity-auth');
 var config = require('config');
 var storageLib = require('serenity-storage')(config);
 
@@ -54,7 +53,7 @@ var getChallengeFileURL = function(method, req, res, next) {
         return cb({message: 'Cannot find a challenge for challengeId ' + challengeId, code: routeHelper.HTTP_NOT_FOUND});
       }
 
-      if (!safeList.currentUserIsSafe(req)) {
+      if (!auth.currentUserIsSafe(req)) {
         challenge.getParticipants({where: {userId: user.id}}).success(function(participants) {
           cb(null, participants);
         }).error(function(err) {
@@ -66,7 +65,7 @@ var getChallengeFileURL = function(method, req, res, next) {
 
     },
     function(participants, cb) {
-      if (!safeList.currentUserIsSafe(req)) {
+      if (!auth.currentUserIsSafe(req)) {
         // participant will be an array, should not be empty array
         if (!participants || participants.length === 0) {
           return cb({message: 'User is not authorized', code: routeHelper.HTTP_UNAUTHORIZED});
@@ -112,7 +111,7 @@ var getSubmissionFileURL = function(method, req, res, next) {
         return cb({message: 'Cannot find a challenge for challengeId ' + challengeId, code: routeHelper.HTTP_NOT_FOUND});
       }
 
-      if (!safeList.currentUserIsSafe(req)) {
+      if (!auth.currentUserIsSafe(req)) {
         challenge.getSubmissions({where: {submitterId: user.id}}).success(function (submissions) {
           cb(null, submissions);
         }).error(function (err) {
@@ -123,7 +122,7 @@ var getSubmissionFileURL = function(method, req, res, next) {
       }
     },
     function(submissions, cb) {
-      if (!safeList.currentUserIsSafe(req)) {
+      if (!auth.currentUserIsSafe(req)) {
         if (!submissions || submissions.length === 0) {
           return cb({message: 'User is not authorized', code: routeHelper.HTTP_UNAUTHORIZED});
         }
