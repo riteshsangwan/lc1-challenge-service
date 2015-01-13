@@ -50,6 +50,7 @@
     "serenity-storage": "git+ssh://git@gitlab.com:spanhawk/serenity-storage.git",
     "serenity-param-helper": "git+ssh://git@gitlab.com:spanhawk/serenity-param-helper.git",
     "serenity-partial-response-helper": "git+ssh://git@gitlab.com:spanhawk/serenity-partial-response-helper.git",
+    "serenity-controller-helper": "git+ssh://git@gitlab.com:spanhawk/serenity-controller-helper.git",
     "serenity-auth": "git+ssh://git@gitlab.com:spanhawk/serenity-auth.git"
   },
   "devDependencies": {

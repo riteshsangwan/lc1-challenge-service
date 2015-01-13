@@ -15,7 +15,9 @@ var Challenge = datasource.Challenge;
 var File = datasource.File;
 var Participant = datasource.Participant;
 var Submission = datasource.Submission;
-var controllerHelper = require('./../../lib/controllerHelper');
+var serenityControllerHelper = require('serenity-controller-helper');
+var config = require('config');
+var controllerHelper = new serenityControllerHelper(config);
 var routeHelper = require('serenity-route-helper');
 var auth = require('serenity-auth');
 
